@@ -1,44 +1,36 @@
 <!DOCTYPE html>
+<html>
 	<head>
 		<title>Testing the Dissect GA Javascript</title>
 		<meta charset="utf-8">
-		
-		<!-- <script src="dissectsfdcga.js" type="text/javascript" /> //-->
-		<script type="text/javascript">
-		function showData(f) { 
-          f.source.value  = source; 
-          f.medium.value  = medium; 
-          f.term.value    = term; 
-          f.content.value = content; 
-          f.campaign.value = campaign; 
-          f.segment.value = csegment; 
-          f.numvisits.value = nVisits;
-
-          alert('source='+f.source.value); 
-          alert('medium='+f.medium.value); 
-          alert('term='+f.term.value); 
-          alert('content='+f.content.value); 
-          alert('campaign='+f.campaign.value); 
-          alert('custom segment='+f.segment.value); 
-          alert('number of visits='+f.numvisits.value);
-
-          return false; 
-    }
-    </script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="dissectsfdcga.js"></script>
+    
+    <style>
+      label {
+        float: left;
+      }
+    </style>
 	</head>
 	<body>
 		<h3>There is a hidden form on this page that contains values From the GA tracking
     cookies. Click the button to show the extracted values.</h3>
 
-    <form method="POST" name='contactform' onSubmit="showData(this);"> 
-    <input type='hidden' name='source' /> 
-    <input type='hidden' name='medium' /> 
-    <input type='hidden' name='term' /> 
-    <input type='hidden' name='content' /> 
-    <input type='hidden' name='campaign' /> 
-    <input type='hidden' name='segment' />
-    <input type='hidden' name='numvisits' />
-    <input type='submit' value='Show GA Info' /> 
+    <form method="post" id="sponge"> 
+      <label for="source">Source</input>
+      <input type="text" name="source" id="wsource">
+      <label for="medium">Medium</input>
+      <input type="text" name="medium" id="wmedium">
+      <label for="term">Term</input>
+      <input type="text" name="term" id="wterm">
+      <label for="content">Content</input>
+      <input type="text" name="content" id="wcontent">
+      <label for="campaign">Campaign</input>
+      <input type="text" name="campaign" id="wcampaign">
+      <label for="segment">Segment</input>
+      <input type="text" name="segment" id="wsegment">
+      <label for="numvisits">Number of Visits</input>
+      <input type="text" name="numvisits" id="wnumvisits">
     </form>
     
     <!-- Here is our standard asynchronous Google Analytics code //-->
@@ -55,7 +47,12 @@
       })();
 
     </script>
-		<!-- End of Google Analytics Code 
-		
+		<!-- End of Google Analytics Code //-->
+		<script>
+		$(document).ready(function() {
+      populateHiddenFields();
+    });
+    </script>
+      
 	</body>
-</html>
+</html>  <label for="source">

@@ -14,13 +14,13 @@ function populateHiddenFields() {
 
 	var analyticsData = getAnalyticsData();
 	
-	$('#wso').val(analyticsData['source']);
-	$('#wme').val(analyticsData['medium']);
-	$('#wte').val(analyticsData['term']);
-	$('#wco').val(analyticsData['content']);
-	$('#wca').val(analyticsData['campaign']);
-	$('#wse').val(analyticsData['csegment']);
-	$('#wnv').val(analyticsData['numvisits']);
+	$('#wsource').val(analyticsData['source']);
+	$('#wmedium').val(analyticsData['medium']);
+	$('#wterm').val(analyticsData['term']);
+	$('#wcontent').val(analyticsData['content']);
+	$('#wcampaign').val(analyticsData['campaign']);
+	$('#wsegment').val(analyticsData['csegment']);
+	$('#wnumvisits').val(analyticsData['numvisits']);
 	return true;
 }
 
