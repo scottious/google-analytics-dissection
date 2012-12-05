@@ -35,7 +35,7 @@ or regular javascript:
     window.onload=populateHiddenFields();
     </script>
 
-# Plans - TODO
+### Plans - TODO
 
 - Rewrite the javascript to abstract functions into a class to reduce the possibility of conflicts
 - Use Juicer as a javascript minimizer/compressor
