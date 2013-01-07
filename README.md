@@ -1,42 +1,70 @@
 # Dissect Google Analytics
 
-The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni
+The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni.
 
 ## Usage
 
-The script uses the ID of the field to set the value.
-So, add the following fields to your form:
+Download [lib/ga-dissect.min.js](https://raw.github.com/scottious/ga-crm-integration/master/lib/ga-dissect.min.js) and add it to your page:
 
-    <input type="hidden" name="source" id="wsource">
-    <input type="hidden" name="medium" id="wmedium">
-    <input type="hidden" name="term" id="wterm">
-    <input type="hidden" name="content" id="wcontent">
-    <input type="hidden" name="campaign" id="wcampaign">
-    <input type="hidden" name="segment" id="wsegment">
-    <input type="hidden" name="numvisits" id="wnumvisits">
+```html
+<script src="dissect-ga.min.js" type="text/javascript"></script>
+```
 
-Include the dissectsfdcga.js javascript file.
+Use `GADissect.cookieProperties()` to read the cookie. Make sure to call this after `ga.js` has loaded, as it will make changes to the cookie.
 
-    <script src="dissectsfdcga.js"></script>
-		
-Call the populateHiddenFields(); function after the DOM has settled.
+```javascript
+var properties = GADissect.cookieProperties();
+alert(properties.source); // Will alert the "source" Google Analytics tracks
+```
 
-jQuery version:
+The `properties` object will return a set of properties tracked by Google Analytics:
 
-    <script>
-    $(document).ready(function() {
-      populateHiddenFields();
-    });
-    </script>
-    
-or regular javascript:
+* `source` -- Referral source (e.g. `(direct)`, `google`, `referrer.example.com`)
+* `medium` -- Referral medium (e.g. `cpc`, `(not set)`)
+* `term` -- The search term (e.g. "new shoes")
+* `content` -- Used for A/B testing and content-targeted ads (e.g. `linktext`)
+* `campaign` -- Name of the campaign (e.g. `spring_sale`)
+* `customSegment` -- Segment information, if available (e.g. `shoes_ad_customers`)
+* `numVisits` -- The number of visits to this site (e.g. `5`)
 
-    <script>
-    window.onload=populateHiddenFields();
-    </script>
+## Passing values into a form
 
-### Plans - TODO
+If you want to injet the values into a form, start by adding the fields:
 
-- Rewrite the javascript to abstract functions into a class to reduce the possibility of conflicts
-- Use Juicer as a javascript minimizer/compressor
+```html
+<input type="hidden" name="source" id="ga-source">
+<input type="hidden" name="medium" id="ga-medium">
+<input type="hidden" name="term" id="ga-term">
+...etc..
+```
 
+Using jQuery, you could add the values like this:
+
+```javascript
+$(document).ready(function() {
+  var gaTracking = GADissect.cookieProperties();
+  $('#ga-source').val(gaTracking.source);
+  $('#ga-medium').val(gaTracking.medium);
+  $('#ga-term').val(gaTracking.term);
+  // ...etc..
+});
+```
+
+Or, using plain JavaScript:
+
+```javascript
+// Add this once GA has loaded
+var gaTracking = GADissect.cookieProperties();
+document.getElementByID('ga-source').value = gaTracking.source;
+document.getElementByID('ga-medium').value = gaTracking.source;
+document.getElementByID('ga-term').value   = gaTracking.term;
+// ...etc...
+```
+
+## Development
+
+Install [Node.js](http://nodejs.org/), `cd` into the cloned repository and run:
+
+    $ npm install
+
+Run tests with `test/runnner.html`.
