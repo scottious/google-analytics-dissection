@@ -21,7 +21,7 @@ The `properties` object will return a set of properties tracked by Google Analyt
 
 * `source` -- Referral source (e.g. `(direct)`, `google`, `referrer.example.com`)
 * `medium` -- Referral medium (e.g. `cpc`, `(not set)`)
-* `term` -- The search term (e.g. "new shoes")
+* `term` -- The search term (e.g. `new shoes`)
 * `content` -- Used for A/B testing and content-targeted ads (e.g. `linktext`)
 * `campaign` -- Name of the campaign (e.g. `spring_sale`)
 * `customSegment` -- Segment information, if available (e.g. `shoes_ad_customers`)

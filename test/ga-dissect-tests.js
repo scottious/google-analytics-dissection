@@ -48,12 +48,14 @@ test("the customSegment property", function() {
   equal(properties.customSegment, 'segment');
 });
 
+
 module("Custom segment");
 
 test("ignores custom variables", function() {
   stubCookie("__utmv=1.|1=Visitor%20Class=user=1;");
-  equal(GADissect.cookieProperties().customSegment, "-");
+  equal(GADissect.cookieProperties().customSegment, "");
 });
+
 
 module("With AdWords present", {
   setup: function() {
@@ -74,6 +76,22 @@ test("medium is set to 'cpc'", function() {
   equal(properties.medium, "cpc");
 });
 
+
+module("With missing properties", {
+  setup: function() {
+    stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|utmcsr=referrer.example.com|utmcmd=referral;");
+  }
+});
+
+test("returns an empty string by default", function() {
+  equal(GADissect.cookieProperties().content, "");
+});
+
+test("returns 0 for numVisits", function() {
+  equal(GADissect.cookieProperties().numVisits, 0);
+});
+
+
 module("With a custom empty value", {
   setup: function() {
     originalEmpty = GADissect.emptyValue;
@@ -84,10 +102,7 @@ module("With a custom empty value", {
   }
 })
 
-test("returns the emptyValue property", function() {
-  stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|" +
-             "utmcsr=referrer.example.com|" +
-             "utmcmd=referral;");
-  
+test("returns the custom empty value", function() {
+  stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|utmcsr=referrer.example.com|utmcmd=referral;");
   equal(GADissect.cookieProperties().customSegment, "empty");
 });
