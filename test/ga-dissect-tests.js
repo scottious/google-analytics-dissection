@@ -1,4 +1,4 @@
-var properties;
+var properties, originalEmpty;
 
 function stubCookie(value) {
   GADissect.readCookie = function() {
@@ -51,9 +51,8 @@ test("the customSegment property", function() {
 module("Custom segment");
 
 test("ignores custom variables", function() {
-  stubCookie("__utmv=1.|1=Visitor%20Class=user=1;")
-  properties = GADissect.cookieProperties();
-  equal(properties.customSegment, "");
+  stubCookie("__utmv=1.|1=Visitor%20Class=user=1;");
+  equal(GADissect.cookieProperties().customSegment, "-");
 });
 
 module("With AdWords present", {
@@ -73,4 +72,22 @@ test("source is set to 'google'", function() {
 
 test("medium is set to 'cpc'", function() {
   equal(properties.medium, "cpc");
+});
+
+module("With a custom empty value", {
+  setup: function() {
+    originalEmpty = GADissect.emptyValue;
+    GADissect.emptyValue = "empty";
+  },
+  teardown: function() {
+    GADissect.emptyValue = originalEmpty;
+  }
+})
+
+test("returns the emptyValue property", function() {
+  stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|" +
+             "utmcsr=referrer.example.com|" +
+             "utmcmd=referral;");
+  
+  equal(GADissect.cookieProperties().customSegment, "empty");
 });
