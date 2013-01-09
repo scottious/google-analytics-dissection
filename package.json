@@ -1,0 +1,7 @@
+{
+  "name": "ga-dissect",
+  "version": "1.0.0",
+  "devDependencies": {
+    "qunitjs": "1.10.x"
+  }
+}
