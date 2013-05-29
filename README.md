@@ -4,7 +4,7 @@ The aim of this project is simply to provide a simple javascript file to enable 
 
 ## Usage
 
-Download [lib/ga-dissect.min.js](lib/ga-dissect.min.js) and add it to your page:
+Download [lib/ga-dissect.min.js](lib/ga-dissect.min.js?raw=true) and add it to your page:
 
 ```html
 <script src="dissect-ga.min.js" type="text/javascript"></script>
