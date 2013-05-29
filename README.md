@@ -7,7 +7,7 @@ The aim of this project is simply to provide a simple javascript file to enable 
 Download [lib/ga-dissect.min.js](lib/ga-dissect.min.js?raw=true) and add it to your page:
 
 ```html
-<script src="dissect-ga.min.js" type="text/javascript"></script>
+<script src="ga-dissect.min.js" type="text/javascript"></script>
 ```
 
 Use `GADissect.cookieProperties()` to read the cookie. Make sure to call this after `ga.js` has loaded, as `ga.js` will make changes to the cookie.
