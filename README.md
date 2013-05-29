@@ -29,7 +29,7 @@ The `properties` object will return a set of properties tracked by Google Analyt
 
 ## Passing values into a form
 
-If you want to injet the values into a form, start by adding the fields:
+If you want to inject the values into a form, start by adding the fields:
 
 ```html
 <input type="hidden" name="source" id="ga-source">
