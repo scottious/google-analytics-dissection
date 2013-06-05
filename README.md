@@ -67,4 +67,10 @@ Install [Node.js](http://nodejs.org/), `cd` into the cloned repository and run:
 
     $ npm install
 
-Run tests by opening `test/runner.html`.
+Run tests by opening `test/runner.html`, or from the command line:
+
+    $ npm test
+
+Minify JavaScript with:
+
+    $ uglifyjs ./lib/ga-dissect.js > ./lib/ga-dissect.min.js
