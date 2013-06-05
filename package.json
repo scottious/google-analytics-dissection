@@ -2,6 +2,10 @@
   "name": "ga-dissect",
   "version": "1.0.0",
   "devDependencies": {
-    "qunitjs": "1.10.x"
+    "qunitjs": "1.10.x",
+    "uglify-js": "2.2.x"
+  },
+  "scripts": {
+    "test": "qunit -c ./lib/ga-dissect.js -t ./test/ga-dissect-tests.js"
   }
 }

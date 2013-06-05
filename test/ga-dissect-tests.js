@@ -6,7 +6,7 @@ function stubCookie(value) {
   }
 }
 
-module("Dissect extracts", {
+QUnit.module("Dissect extracts", {
   setup: function() {
     stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|" +
          "utmcsr=referrer.example.com|" +
@@ -49,7 +49,7 @@ test("the customSegment property", function() {
 });
 
 
-module("Custom segment");
+QUnit.module("Custom segment");
 
 test("ignores custom variables", function() {
   stubCookie("__utmv=1.|1=Visitor%20Class=user=1;");
@@ -57,7 +57,7 @@ test("ignores custom variables", function() {
 });
 
 
-module("With AdWords present", {
+QUnit.module("With AdWords present", {
   setup: function() {
     stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|" +
              "utmcsr=referrer.example.com|" +
@@ -77,7 +77,7 @@ test("medium is set to 'cpc'", function() {
 });
 
 
-module("With missing properties", {
+QUnit.module("With missing properties", {
   setup: function() {
     stubCookie("__utmz=123456789.1234567890.1.1.utmccn=campaign|utmcsr=referrer.example.com|utmcmd=referral;");
   }
@@ -92,7 +92,7 @@ test("returns 0 for numVisits", function() {
 });
 
 
-module("With a custom empty value", {
+QUnit.module("With a custom empty value", {
   setup: function() {
     originalEmpty = GADissect.emptyValue;
     GADissect.emptyValue = "empty";

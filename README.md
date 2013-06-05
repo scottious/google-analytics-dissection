@@ -1,16 +1,16 @@
 # Dissect Google Analytics
 
-The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni.
+The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the script http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni.
 
 ## Usage
 
-Download [lib/ga-dissect.min.js](https://raw.github.com/scottious/ga-crm-integration/master/lib/ga-dissect.min.js) and add it to your page:
+Download [lib/ga-dissect.min.js](lib/ga-dissect.min.js?raw=true) and add it to your page:
 
 ```html
-<script src="dissect-ga.min.js" type="text/javascript"></script>
+<script src="ga-dissect.min.js" type="text/javascript"></script>
 ```
 
-Use `GADissect.cookieProperties()` to read the cookie. Make sure to call this after `ga.js` has loaded, as it will make changes to the cookie.
+Use `GADissect.cookieProperties()` to read the cookie. Make sure to call this after `ga.js` has loaded, as `ga.js` will make changes to the cookie.
 
 ```javascript
 var properties = GADissect.cookieProperties();
@@ -29,7 +29,7 @@ The `properties` object will return a set of properties tracked by Google Analyt
 
 ## Passing values into a form
 
-If you want to injet the values into a form, start by adding the fields:
+If you want to inject the values into a form, start by adding the fields:
 
 ```html
 <input type="hidden" name="source" id="ga-source">
@@ -67,4 +67,10 @@ Install [Node.js](http://nodejs.org/), `cd` into the cloned repository and run:
 
     $ npm install
 
-Run tests with `test/runnner.html`.
+Run tests by opening `test/runner.html`, or from the command line:
+
+    $ npm test
+
+Minify JavaScript with:
+
+    $ uglifyjs ./lib/ga-dissect.js > ./lib/ga-dissect.min.js
