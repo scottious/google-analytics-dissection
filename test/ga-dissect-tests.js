@@ -49,9 +49,8 @@ test("the customSegment property", function() {
 });
 
 test("the uniqueVisitorID property", function() {
-  equal(properties.uniqueVisitorID, '111111111.2222222222.3333333333.4444444444.5555555555');
+  equal(properties.uniqueVisitorID, '111111111.2222222222.3333333333');
 });
-
 
 QUnit.module("Custom segment");
 
