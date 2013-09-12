@@ -26,6 +26,7 @@ The `properties` object will return a set of properties tracked by Google Analyt
 * `campaign` -- Name of the campaign (e.g. `spring_sale`)
 * `customSegment` -- Segment information, if available (e.g. `shoes_ad_customers`)
 * `numVisits` -- The number of visits to this site (e.g. `5`)
+* `uniqueVisitorID` -- The unique visitor identifier Google uses (tracked across multiple sessions)
 
 ## Passing values into a form
 
