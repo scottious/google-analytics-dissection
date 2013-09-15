@@ -52,6 +52,10 @@ test("the uniqueVisitorID property", function() {
   equal(properties.uniqueVisitorID, '111111111.2222222222.3333333333');
 });
 
+test("the crossDomainVisitorID property", function() {
+  equal(properties.crossDomainVisitorID, '2222222222');
+});
+
 QUnit.module("Custom segment");
 
 test("ignores custom variables", function() {

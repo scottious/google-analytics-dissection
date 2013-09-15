@@ -26,7 +26,8 @@ The `properties` object will return a set of properties tracked by Google Analyt
 * `campaign` -- Name of the campaign (e.g. `spring_sale`)
 * `customSegment` -- Segment information, if available (e.g. `shoes_ad_customers`)
 * `numVisits` -- The number of visits to this site (e.g. `5`)
-* `uniqueVisitorID` -- A unique visitor identifier (tracked across multiple sessions)
+* `uniqueVisitorID` -- A unique visitor identifier, tracked across multiple sessions, scoped to a domain (e.g. `111111111.2222222222.3333333333`)
+* `crossDomainVisitorID` -- The unqiue visitor identifier tracked across multiple domains and sessions (e.g. `3203602615`)
 
 ## Passing values into a form
 
