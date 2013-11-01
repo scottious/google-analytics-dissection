@@ -1,6 +1,32 @@
-# Dissect Google Analytics
+# Google Analytics Cookie Reader
 
-The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the script http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni.
+The cookie Google Analytics creates for a visitor on your site contains lots of interesting information, such as the number of visits the visitor has made in the past and the search term used to reach the site.
+
+This lightweight JavaScript library has been designed to help you parse the values of the cookie for your own use elsewhere.
+
+For instance, you might want to change the page to emphasize pork goods based on the fact that the user reached you by searching for the term “bacon”:
+
+```javascript
+var analyticsInfo = GADissect.cookieProperties();
+
+if(analyticsInfo.term.match("bacon")) {
+  alert('We have some great bacon deals for you!');
+}
+```
+
+Or perhaps you want to report to another service the number of visits this user has made:
+
+```javascript
+var analyticsInfo = GADissect.cookieProperties();
+
+reportingAgent.send("Visitor " + analyticsInfo.crossDomainVisitorID +
+                    " is browsing on the site for the " +
+                    analyticsInfo.numVisits + " time");
+```
+
+It's also very simple to send along these values in a form (see below).
+
+This was originally adaptated from the example created by Justin Cutroni in his blog post [Integrating Google Analytics with a CRM](http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/).
 
 ## Google Analytics Support
 
