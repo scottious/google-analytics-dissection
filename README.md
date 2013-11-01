@@ -4,7 +4,9 @@ The aim of this project is simply to provide a simple javascript file to enable 
 
 ## Google Analytics Support
 
-GADissect currently supports `ga.js` only.
+GADissect works by reading the page's cookie and extracting the values.  Only `ga.js` (Classic Analytics) provides this information in the cookie. The newer Universal Analytics (`analytics.js`) doesn't provide the information we need within the cookie.
+
+Both Universal Analytics and Classic Analytics can be used at the same time on a website, although they would have to report to different Website Properties.
 
 ## Usage
 
