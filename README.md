@@ -2,6 +2,10 @@
 
 The aim of this project is simply to provide a simple javascript file to enable you to pass Google Analytics values from the first party cookie to a form, which can in turn pass through to your CRM for true marketing ROI. This is an adaptation of the script http://cutroni.com/blog/2009/03/18/updated-integrating-google-analytics-with-a-crm/ created by Justin Cutroni.
 
+## Google Analytics Support
+
+GADissect currently supports `ga.js` only.
+
 ## Usage
 
 Download [lib/ga-dissect.min.js](lib/ga-dissect.min.js?raw=true) and add it to your page:
