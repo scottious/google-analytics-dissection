@@ -1,0 +1,24 @@
+{
+  "name": "google-analytics-dissection",
+  "version": "1.0.0",
+  "homepage": "https://github.com/scottious/google-analytics-dissection",
+  "authors": [
+    "Pete Nicholls <pete@metanation.com>"
+  ],
+  "description": "Read values from the Classic Google Analytics cookie, including traffic source, number of visits, and campaign information.",
+  "main": "lib/ga-dissect.js",
+  "keywords": [
+    "google",
+    "analytics",
+    "adwords",
+    "cookie"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
